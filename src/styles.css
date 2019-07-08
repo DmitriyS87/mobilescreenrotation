@@ -1,0 +1,51 @@
+.app {
+  height: 100vh;
+  width: 100%;
+}
+
+.main {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+}
+
+.button {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  outline: 0;
+  outline-offset: 0;
+}
+.button svg {
+  fill: black;
+}
+
+.button:hover svg {
+  fill: lightgrey;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 0;
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(100%);
+  clip-path: inset(100%);
+}
+
+@media screen and (orientation: portrait) {
+  body {
+    background-color: rgba(244, 88, 80);
+  }
+}
+@media screen and (orientation: landscape) {
+  body {
+    background-color: rgb(105, 181, 99);
+  }
+}
