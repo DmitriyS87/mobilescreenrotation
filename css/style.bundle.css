@@ -1,0 +1,3 @@
+.app{width:100%}.app,.main{height:100vh}.main{display:-webkit-box;display:flex;justify-content:space-around;-webkit-box-align:center;align-items:center}.button{background:transparent;border:0;cursor:pointer;outline:0;outline-offset:0}.button svg{fill:#000}.button:hover svg{fill:#d3d3d3}.visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;white-space:nowrap;border:0;clip:rect(0 0 0 0);-webkit-clip-path:inset(100%);clip-path:inset(100%)}@media screen and (orientation:portrait){body{background-color:#f45850}}@media screen and (orientation:landscape){body{background-color:#69b563}}
+
+/*# sourceMappingURL=style.bundle.css.map*/
