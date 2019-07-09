@@ -30,7 +30,7 @@ const StyledContainer = styled.div`
     background: plum;
   }
   .poster-progress::-moz-progress-bar {
-    background: lightblue;
+    background: plum;
   }
 
   .poster-progress__container {
