@@ -17,8 +17,9 @@ const App = () => {
   const [isProgressBar, setProgressBarStatus] = useState(true);
   const [screen, setScreen] = useState(window.screen.orientation.type);
 
-  const handleScreenOrientationChange = () => {
-    setScreen(window.screen.orientation.type);
+  const nandleScreenPortrait = mql => {
+    const orientation = mql.matches ? 'portrait-primary' : 'landscape-primary';
+    setScreen(orientation);
     setCrossStatus(false);
     setProgressBarStatus(true);
   };
@@ -29,10 +30,11 @@ const App = () => {
   };
 
   useEffect(() => {
-    window.screen.orientation.onchange = handleScreenOrientationChange;
+    const mqlPortrait = window.matchMedia('screen and (orientation: portrait)');
+    mqlPortrait.addListener(nandleScreenPortrait);
 
     return () => {
-      window.screen.orientation.onchange = null;
+      mqlPortrait.removeListener(nandleScreenPortrait);
     };
   });
 
