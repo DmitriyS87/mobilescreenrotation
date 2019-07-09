@@ -1,3 +1,7 @@
+body {
+  overflow: hidden;
+}
+
 .app {
   height: 100vh;
   width: 100%;
@@ -16,13 +20,6 @@
   cursor: pointer;
   outline: 0;
   outline-offset: 0;
-}
-.button svg {
-  fill: black;
-}
-
-.button:hover svg {
-  fill: lightgrey;
 }
 
 .visually-hidden {
@@ -43,9 +40,21 @@
   body {
     background-color: rgba(244, 88, 80);
   }
+  .button svg {
+    fill: rgb(65, 183, 89);
+  }
+  .button:hover svg {
+    fill: darkgreen;
+  }
 }
 @media screen and (orientation: landscape) {
   body {
     background-color: rgb(65, 183, 89);
+  }
+  .button svg {
+    fill: rgba(244, 88, 80);
+  }
+  .button:hover svg {
+    fill: darkred;
   }
 }
