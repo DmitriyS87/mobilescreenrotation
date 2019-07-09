@@ -29683,7 +29683,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  img {\n    width: 100%;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  img {\n    max-width: 100vw;\n    max-height: 100vh;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -29835,6 +29835,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var entryPoint = document.querySelector('.app');
+window.addEventListener("load", function () {
+  window.scrollTo(0, 0);
+});
 
 var init = function init() {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_App__WEBPACK_IMPORTED_MODULE_2__["default"], null), entryPoint);
