@@ -7,7 +7,8 @@
     "eslint": "eslint src/**/*.jsx",
     "test": "npm run eslint",
     "build": "webpack --mode development",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "deploy": "gh-pages -d public"
   },
   "author": "DmitriyS87 <schukindmitriy@gmail.com> (https://github.com/DmitriyS87)",
   "license": "ISC",
