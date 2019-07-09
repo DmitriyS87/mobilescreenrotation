@@ -29733,7 +29733,7 @@ function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  position: absolute;\n  bottom: ", "px;\n  left: ", "px;\n  color: blue;\n  z-index: 50;\n  width: 98vw;\n\n  .poster-progress {\n    position: relative;\n    width: 90%;\n    height: 2vh;\n    border-radius: 1px;\n    border: none;\n    background: lightblue;\n  }\n\n  .poster-progress::-webkit-progress-bar {\n    background: lightblue;\n  }\n  .poster-progress::-webkit-progress-value {\n    background: plum;\n  }\n  .poster-progress::-moz-progress-bar {\n    background: lightblue;\n  }\n\n  .poster-progress__container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  position: absolute;\n  bottom: ", "px;\n  left: ", "px;\n  color: blue;\n  z-index: 50;\n  width: 98vw;\n\n  .poster-progress {\n    position: relative;\n    width: 90%;\n    height: 2vh;\n    border-radius: 1px;\n    border: none;\n    background: lightblue;\n  }\n\n  .poster-progress::-webkit-progress-bar {\n    background: lightblue;\n  }\n  .poster-progress::-webkit-progress-value {\n    background: plum;\n  }\n  .poster-progress::-moz-progress-bar {\n    background: plum;\n  }\n\n  .poster-progress__container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
