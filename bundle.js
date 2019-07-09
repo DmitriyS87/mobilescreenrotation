@@ -29574,8 +29574,9 @@ var App = function App() {
       screen = _useState6[0],
       setScreen = _useState6[1];
 
-  var handleScreenOrientationChange = function handleScreenOrientationChange() {
-    setScreen(window.screen.orientation.type);
+  var nandleScreenPortrait = function nandleScreenPortrait(mql) {
+    var orientation = mql.matches ? 'portrait-primary' : 'landscape-primary';
+    setScreen(orientation);
     setCrossStatus(false);
     setProgressBarStatus(true);
   };
@@ -29586,9 +29587,10 @@ var App = function App() {
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    window.screen.orientation.onchange = handleScreenOrientationChange;
+    var mqlPortrait = window.matchMedia('screen and (orientation: portrait)');
+    mqlPortrait.addListener(nandleScreenPortrait);
     return function () {
-      window.screen.orientation.onchange = null;
+      mqlPortrait.removeListener(nandleScreenPortrait);
     };
   });
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
@@ -29621,7 +29623,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  position: absolute;\n  right: ", "px;\n  top: ", "px;\n  z-index: 50;\n  color: red;\n  font-width: 600;\n"]);
+  var data = _taggedTemplateLiteral(["\n  position: absolute;\n  right: calc(100vw / 25);\n  top: calc(100vh / 35);\n  z-index: 50;\n  color: red;\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -29634,11 +29636,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
-var position = {
-  offsetX: 25,
-  offsetY: 25
-};
-var StyledContainer = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject(), position.offsetX, position.offsetY);
+var StyledContainer = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject());
 
 var CloseCross = function CloseCross(props) {
   var isAvailable = props.isAvailable;
@@ -29658,9 +29656,9 @@ var CloseCross = function CloseCross(props) {
     type: "button",
     className: "button ".concat(isAvailable ? '' : 'visually-hidden')
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
-    viewBox: "0 0 40 40",
-    width: "30",
-    height: "30"
+    viewBox: "0 0 50 50",
+    width: "50",
+    height: "50"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("use", {
     xlinkHref: "#close_cross"
   }))));
@@ -29735,7 +29733,7 @@ function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  position: absolute;\n  bottom: ", "px;\n  left: ", "px;\n  color: blue;\n  z-index: 50;\n  width: 98vw;\n\n  .poster-progress {\n    position: relative;\n    width: 90%;\n    height: 4px;\n    border-radius: 1px;\n    border: none;\n    background: lightblue;\n  }\n\n  .poster-progress::-webkit-progress-bar {\n    background: lightblue;\n  }\n  .poster-progress::-webkit-progress-value {\n    background: plum;\n  }\n  .poster-progress::-moz-progress-bar {\n    background: lightblue;\n  }\n\n  .poster-progress__container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  position: absolute;\n  bottom: ", "px;\n  left: ", "px;\n  color: blue;\n  z-index: 50;\n  width: 98vw;\n\n  .poster-progress {\n    position: relative;\n    width: 90%;\n    height: 2vh;\n    border-radius: 1px;\n    border: none;\n    background: lightblue;\n  }\n\n  .poster-progress::-webkit-progress-bar {\n    background: lightblue;\n  }\n  .poster-progress::-webkit-progress-value {\n    background: plum;\n  }\n  .poster-progress::-moz-progress-bar {\n    background: lightblue;\n  }\n\n  .poster-progress__container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -29835,8 +29833,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var entryPoint = document.querySelector('.app');
-window.addEventListener("load", function () {
-  window.scrollTo(0, 0);
+window.addEventListener('load', function () {
+  window.scrollBy(0, -1000);
 });
 
 var init = function init() {
