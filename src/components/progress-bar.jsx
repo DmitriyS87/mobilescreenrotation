@@ -17,7 +17,7 @@ const StyledContainer = styled.div`
   .poster-progress {
     position: relative;
     width: 90%;
-    height: 4px;
+    height: 2vh;
     border-radius: 1px;
     border: none;
     background: lightblue;

@@ -1,18 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const position = {
-  offsetX: 25,
-  offsetY: 25
-};
-
 const StyledContainer = styled.div`
   position: absolute;
-  right: ${position.offsetX}px;
-  top: ${position.offsetY}px;
+  right: calc(100vw / 25);
+  top: calc(100vh / 35);
   z-index: 50;
   color: red;
-  font-width: 600;
 `;
 
 const CloseCross = props => {
@@ -38,7 +32,7 @@ const CloseCross = props => {
         type="button"
         className={`button ${isAvailable ? '' : 'visually-hidden'}`}
       >
-        <svg viewBox="0 0 40 40" width="30" height="30">
+        <svg viewBox="0 0 50 50" width="50" height="50">
           <use xlinkHref="#close_cross" />
         </svg>
       </button>
