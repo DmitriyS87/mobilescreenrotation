@@ -29574,7 +29574,13 @@ var App = function App() {
       screen = _useState6[0],
       setScreen = _useState6[1];
 
+  var calcViewportVH = function calcViewportVH() {
+    var vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', "".concat(vh, "px"));
+  };
+
   var handleScreenPortrait = function handleScreenPortrait(mql) {
+    calcViewportVH();
     var orientation = mql.matches ? 'portrait-primary' : 'landscape-primary';
     setScreen(orientation);
     setCrossStatus(false);
@@ -29587,6 +29593,7 @@ var App = function App() {
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    calcViewportVH();
     var mqlPortrait = window.matchMedia('screen and (orientation: portrait)');
     mqlPortrait.addListener(handleScreenPortrait);
     return function () {
