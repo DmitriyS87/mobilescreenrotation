@@ -29833,9 +29833,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var entryPoint = document.querySelector('.app');
-window.addEventListener('load', function () {
-  window.scrollBy(0, -1000);
-});
 
 var init = function init() {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_App__WEBPACK_IMPORTED_MODULE_2__["default"], null), entryPoint);
