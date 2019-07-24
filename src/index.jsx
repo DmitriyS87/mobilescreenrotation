@@ -5,10 +5,6 @@ import './styles.css';
 
 const entryPoint = document.querySelector('.app');
 
-window.addEventListener('load', () => {
-  window.scrollBy(0, -1000);
-});
-
 const init = () => {
   ReactDOM.render(<App />, entryPoint);
 };

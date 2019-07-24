@@ -16,7 +16,6 @@ const App = () => {
   const [isCross, setCrossStatus] = useState(false);
   const [isProgressBar, setProgressBarStatus] = useState(true);
   const [screen, setScreen] = useState(window.screen.orientation.type);
-
   const handleScreenPortrait = mql => {
     const orientation = mql.matches ? 'portrait-primary' : 'landscape-primary';
     setScreen(orientation);
