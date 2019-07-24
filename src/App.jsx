@@ -18,7 +18,7 @@ const App = () => {
   const [screen, setScreen] = useState(window.screen.orientation.type);
 
   const calcViewportVH = () => {
-     const vh = window.innerHeight * 0.01;
+    const vh = window.innerHeight * 0.01;
      document.documentElement.style.setProperty('--vh', `${vh}px`);
   }
 
