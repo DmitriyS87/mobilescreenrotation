@@ -16,7 +16,14 @@ const App = () => {
   const [isCross, setCrossStatus] = useState(false);
   const [isProgressBar, setProgressBarStatus] = useState(true);
   const [screen, setScreen] = useState(window.screen.orientation.type);
+
+  const calcViewportVH = () => {
+     const vh = window.innerHeight * 0.01;
+     document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
+
   const handleScreenPortrait = mql => {
+    calcViewportVH();
     const orientation = mql.matches ? 'portrait-primary' : 'landscape-primary';
     setScreen(orientation);
     setCrossStatus(false);
@@ -29,6 +36,7 @@ const App = () => {
   };
 
   useEffect(() => {
+    calcViewportVH();
     const mqlPortrait = window.matchMedia('screen and (orientation: portrait)');
     mqlPortrait.addListener(handleScreenPortrait);
 
