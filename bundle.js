@@ -29574,7 +29574,7 @@ var App = function App() {
       screen = _useState6[0],
       setScreen = _useState6[1];
 
-  var nandleScreenPortrait = function nandleScreenPortrait(mql) {
+  var handleScreenPortrait = function handleScreenPortrait(mql) {
     var orientation = mql.matches ? 'portrait-primary' : 'landscape-primary';
     setScreen(orientation);
     setCrossStatus(false);
@@ -29588,9 +29588,9 @@ var App = function App() {
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     var mqlPortrait = window.matchMedia('screen and (orientation: portrait)');
-    mqlPortrait.addListener(nandleScreenPortrait);
+    mqlPortrait.addListener(handleScreenPortrait);
     return function () {
-      mqlPortrait.removeListener(nandleScreenPortrait);
+      mqlPortrait.removeListener(handleScreenPortrait);
     };
   });
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
