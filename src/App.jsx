@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import FullScreenPicture from './components/full-screen-picture';
 import ProgressBar from './components/progress-bar';
 import CloseCross from './components/close-cross';
-
 import './styles.css';
 
 const picture = {
@@ -13,13 +12,17 @@ const picture = {
 const App = () => {
   const delay = 1000;
 
+  const getInitialScreenOrientation = () => {
+    return window.matchMedia('screen and (orientation: portrait)').matches ? 'portrait-primary' : 'landscape-primary';
+  }
+
   const [isCross, setCrossStatus] = useState(false);
   const [isProgressBar, setProgressBarStatus] = useState(true);
-  const [screen, setScreen] = useState(window.screen.orientation.type);
+  const [screen, setScreen] = useState(getInitialScreenOrientation());
 
   const calcViewportVH = () => {
-    const vh = window.innerHeight * 0.01;
-     document.documentElement.style.setProperty('--vh', `${vh}px`);
+    const vh = window.innerHeight * 0.01 || `480`;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
   }
 
   const handleScreenPortrait = mql => {
@@ -37,12 +40,18 @@ const App = () => {
 
   useEffect(() => {
     calcViewportVH();
-    const mqlPortrait = window.matchMedia('screen and (orientation: portrait)');
-    mqlPortrait.addListener(handleScreenPortrait);
+    if (window.matchMedia) {
+      const mqlPortrait = window.matchMedia('screen and (orientation: portrait)');
+      if (typeof mqlPortrait.addListener === `function`) {
+        mqlPortrait.addListener(handleScreenPortrait);
 
-    return () => {
-      mqlPortrait.removeListener(handleScreenPortrait);
-    };
+        return () => {
+          mqlPortrait.removeListener(handleScreenPortrait);
+        };
+      }
+    }
+
+    return () => { };
   });
 
   return (
