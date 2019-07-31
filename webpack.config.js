@@ -10,7 +10,17 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'public'),
     compress: false,
-    port: 1337
+    port: 1337,
+    hot: true,
+    publicPath: '/',
+    host: '192.168.0.102',
+    proxy: {
+      '/api/**': {
+        target: '192.168.0.102:8000',
+        secure: false,
+        changeOrigin: true,
+      }
+    },
   },
   devtool: 'source-map',
   module: {
