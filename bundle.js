@@ -29588,18 +29588,7 @@ var App = function App() {
   var delay = 1000;
 
   var getInitialScreenOrientation = function getInitialScreenOrientation() {
-    var deprecatedOrientationForSafari = function deprecatedOrientationForSafari() {
-      var ScreenOrientation = {
-        "0": 'portrait-primary',
-        "90": 'landscape-primary',
-        "-90": 'landscape-primary',
-        "180": 'portrait-primary'
-      };
-      return window.orientation ? ScreenOrientation[String(window.orientation)] : false;
-    };
-
-    var orientation = window.screen.orientation.type || deprecatedOrientationForSafari() || 'portrait-primary';
-    return orientation;
+    return window.matchMedia('screen and (orientation: portrait)').matches ? 'portrait-primary' : 'landscape-primary';
   };
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
@@ -29739,7 +29728,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  img {\n    max-width: 100%;\n    max-height: 100%;\n    ", "\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  height: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n\n  img {\n    max-width: 100%;\n    max-height: 100%;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -29752,10 +29741,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
-var StyledContainer = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].picture(_templateObject(), ''
-/* max-width: 100vw;
-max-height: 100vh; */
-);
+var StyledContainer = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].picture(_templateObject());
 
 var FullScreenPicture = function FullScreenPicture(props) {
   var pictureTitle = props.pictureTitle;
