@@ -29551,37 +29551,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-/*
-1)
-ScreenOrientation.type "portrait-primary", "portrait-secondary", "landscape-primary", or "landscape-secondary"
-ScreenOrientation.angle
-ScreenOrientation.onchange
-    no safari
-    no edge
-    no IE
-    no safari on iOs
-
-window.screen.orientation
-    no safari
-    no edge
-    no android
-    no opera
-
-Window.orientation
-  onorientationchange
-  deprecated
-for safari on iOs
-
-0 — нормальная портретная ориентация
--90 — альбомная при повороте по часовой стрелке
-90 — альбомная при повороте против часовой стрелки
-180 — перевёрнутая портретная ориентация (пока только для iPad)
-
-*/
-
 var picture = {
-  'landscape-primary': '960x576_1',
-  'portrait-primary': 'nc_ss19_620x960px_1'
+  'landscape-primary': 'landscape',
+  'portrait-primary': 'portrait'
 };
 
 var App = function App() {
@@ -29670,7 +29642,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  position: absolute;\n  right: calc(100vw / 25);\n  top: calc(100vh / 35);\n  z-index: 50;\n  color: red;\n"]);
+  var data = _taggedTemplateLiteral(["\n  position: absolute;\n  right: calc(100vw / 30);\n  top: calc(100vh / 30);\n  z-index: 50;\n  color: red;\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -29703,9 +29675,9 @@ var CloseCross = function CloseCross(props) {
     type: "button",
     className: "button ".concat(isAvailable ? '' : 'visually-hidden')
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
-    viewBox: "0 0 50 50",
-    width: "50",
-    height: "50"
+    viewBox: "0 0 40 40",
+    width: "40",
+    height: "40"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("use", {
     xlinkHref: "#close_cross"
   }))));
@@ -29746,12 +29718,14 @@ var StyledContainer = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].
 var FullScreenPicture = function FullScreenPicture(props) {
   var pictureTitle = props.pictureTitle;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StyledContainer, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("source", {
-    srcSet: "img/squooshed/".concat(pictureTitle, ".webp"),
+    srcSet: "img/squooshed/".concat(pictureTitle, "_min.webp 1x, img/squooshed/").concat(pictureTitle, "_mid.webp 2x, img/squooshed/").concat(pictureTitle, "_max.webp 3x"),
     type: "image/webp"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("source", {
+    srcSet: "img/squooshed/".concat(pictureTitle, "_min.jpg 1x, img/squooshed/").concat(pictureTitle, "_mid.jpg 2x, img/squooshed/").concat(pictureTitle, "_max.jpg 3x"),
+    type: "image/jpeg"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: "img/squooshed/".concat(pictureTitle, ".jpg"),
-    srcSet: "img/squooshed/".concat(pictureTitle, ".png 2x, img/").concat(pictureTitle, ".png 3x"),
-    alt: ""
+    src: "img/squooshed/".concat(pictureTitle, "_min.png"),
+    alt: "\u041A\u0440\u0430\u0441\u0438\u0432\u0430\u044F \u043A\u0430\u0440\u0442\u0438\u043D\u043A\u0430"
   }));
 };
 
@@ -29780,7 +29754,7 @@ function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  position: absolute;\n  bottom: ", "px;\n  left: ", "px;\n  color: blue;\n  z-index: 50;\n  width: 98vw;\n\n  .poster-progress {\n    position: relative;\n    width: 90%;\n    height: 2vh;\n    border-radius: 1px;\n    border: none;\n    background: lightblue;\n  }\n\n  .poster-progress::-webkit-progress-bar {\n    background: lightblue;\n  }\n  .poster-progress::-webkit-progress-value {\n    background: plum;\n  }\n  .poster-progress::-moz-progress-bar {\n    background: plum;\n  }\n\n  .poster-progress__container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  position: absolute;\n  bottom: ", "px;\n  left: ", "px;\n  color: blue;\n  z-index: 50;\n  width: 99vw;\n\n  .poster-progress {\n    position: relative;\n    width: 70%;\n    height: 2vh;\n    border-radius: 1px;\n    border: none;\n    background: lightblue;\n  }\n\n  .poster-progress::-webkit-progress-bar {\n    background: lightblue;\n  }\n  .poster-progress::-webkit-progress-value {\n    background: plum;\n  }\n  .poster-progress::-moz-progress-bar {\n    background: plum;\n  }\n\n  .poster-progress__container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -29805,7 +29779,7 @@ var ProgressBar = function ProgressBar(props) {
       isAvailable = props.isAvailable;
 
   function Counter() {
-    var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(1),
+    var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(34),
         _useState2 = _slicedToArray(_useState, 2),
         count = _useState2[0],
         setCount = _useState2[1];
