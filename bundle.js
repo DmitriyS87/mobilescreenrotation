@@ -29551,6 +29551,34 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+/*
+1)
+ScreenOrientation.type "portrait-primary", "portrait-secondary", "landscape-primary", or "landscape-secondary"
+ScreenOrientation.angle
+ScreenOrientation.onchange
+    no safari
+    no edge
+    no IE
+    no safari on iOs
+
+window.screen.orientation
+    no safari
+    no edge
+    no android
+    no opera
+
+Window.orientation
+  onorientationchange
+  deprecated
+for safari on iOs
+
+0 — нормальная портретная ориентация
+-90 — альбомная при повороте по часовой стрелке
+90 — альбомная при повороте против часовой стрелки
+180 — перевёрнутая портретная ориентация (пока только для iPad)
+
+*/
+
 var picture = {
   'landscape-primary': '960x576_1',
   'portrait-primary': 'nc_ss19_620x960px_1'
@@ -29558,6 +29586,21 @@ var picture = {
 
 var App = function App() {
   var delay = 1000;
+
+  var getInitialScreenOrientation = function getInitialScreenOrientation() {
+    var deprecatedOrientationForSafari = function deprecatedOrientationForSafari() {
+      var ScreenOrientation = {
+        "0": 'portrait-primary',
+        "90": 'landscape-primary',
+        "-90": 'landscape-primary',
+        "180": 'portrait-primary'
+      };
+      return window.orientation ? ScreenOrientation[String(window.orientation)] : false;
+    };
+
+    var orientation = window.screen.orientation.type || deprecatedOrientationForSafari() || 'portrait-primary';
+    return orientation;
+  };
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -29569,13 +29612,13 @@ var App = function App() {
       isProgressBar = _useState4[0],
       setProgressBarStatus = _useState4[1];
 
-  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(window.screen.orientation.type),
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(getInitialScreenOrientation()),
       _useState6 = _slicedToArray(_useState5, 2),
       screen = _useState6[0],
       setScreen = _useState6[1];
 
   var calcViewportVH = function calcViewportVH() {
-    var vh = window.innerHeight * 0.01;
+    var vh = window.innerHeight * 0.01 || "480";
     document.documentElement.style.setProperty('--vh', "".concat(vh, "px"));
   };
 
@@ -29594,11 +29637,19 @@ var App = function App() {
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     calcViewportVH();
-    var mqlPortrait = window.matchMedia('screen and (orientation: portrait)');
-    mqlPortrait.addListener(handleScreenPortrait);
-    return function () {
-      mqlPortrait.removeListener(handleScreenPortrait);
-    };
+
+    if (window.matchMedia) {
+      var mqlPortrait = window.matchMedia('screen and (orientation: portrait)');
+
+      if (typeof mqlPortrait.addListener === "function") {
+        mqlPortrait.addListener(handleScreenPortrait);
+        return function () {
+          mqlPortrait.removeListener(handleScreenPortrait);
+        };
+      }
+    }
+
+    return function () {};
   });
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "main"
@@ -29688,7 +29739,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  img {\n    max-width: 100vw;\n    max-height: 100vh;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  img {\n    max-width: 100%;\n    max-height: 100%;\n    ", "\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -29701,7 +29752,10 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
-var StyledContainer = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].picture(_templateObject());
+var StyledContainer = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].picture(_templateObject(), ''
+/* max-width: 100vw;
+max-height: 100vh; */
+);
 
 var FullScreenPicture = function FullScreenPicture(props) {
   var pictureTitle = props.pictureTitle;
@@ -29839,7 +29893,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var entryPoint = document.querySelector('.app');
+var entryPoint = window.document.querySelector(".app");
 
 var init = function init() {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_App__WEBPACK_IMPORTED_MODULE_2__["default"], null), entryPoint);
