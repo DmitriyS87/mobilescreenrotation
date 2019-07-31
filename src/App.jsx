@@ -5,8 +5,8 @@ import CloseCross from './components/close-cross';
 import './styles.css';
 
 const picture = {
-  'landscape-primary': '960x576_1',
-  'portrait-primary': 'nc_ss19_620x960px_1'
+  'landscape-primary': 'landscape',
+  'portrait-primary': 'portrait'
 };
 
 const App = () => {
