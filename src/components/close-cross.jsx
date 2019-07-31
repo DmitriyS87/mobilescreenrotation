@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 const StyledContainer = styled.div`
   position: absolute;
-  right: calc(100vw / 25);
-  top: calc(100vh / 35);
+  right: calc(100vw / 30);
+  top: calc(100vh / 30);
   z-index: 50;
   color: red;
 `;
@@ -32,7 +32,7 @@ const CloseCross = props => {
         type="button"
         className={`button ${isAvailable ? '' : 'visually-hidden'}`}
       >
-        <svg viewBox="0 0 50 50" width="50" height="50">
+        <svg viewBox="0 0 40 40" width="40" height="40">
           <use xlinkHref="#close_cross" />
         </svg>
       </button>
