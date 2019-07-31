@@ -12,11 +12,11 @@ const StyledContainer = styled.div`
   left: ${position.offsetX}px;
   color: blue;
   z-index: 50;
-  width: 98vw;
+  width: 99vw;
 
   .poster-progress {
     position: relative;
-    width: 90%;
+    width: 70%;
     height: 2vh;
     border-radius: 1px;
     border: none;
@@ -44,7 +44,7 @@ const ProgressBar = props => {
   const { onTimerDone, delay, isAvailable } = props;
 
   function Counter() {
-    const [count, setCount] = useState(1);
+    const [count, setCount] = useState(34);
     const savedCallback = useRef();
     const savedId = useRef();
 
